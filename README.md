@@ -22,6 +22,8 @@
 
 2. **Install Dependencies:**
 
+Note : **IF you need to add any new dependency for any feture developement ask in the group first! before adding**
+
    ```bash
    composer install
    npm install
@@ -49,9 +51,9 @@
         DB_CONNECTION=mysql
         DB_HOST=127.0.0.1
         DB_PORT=3306
-        DB_DATABASE=your_database_name
-        DB_USERNAME=your_username
-        DB_PASSWORD=your_password
+        DB_DATABASE=pucc-main
+        DB_USERNAME=root
+        DB_PASSWORD=
     ```
 
 5. **Generate Application Key:**
@@ -108,6 +110,9 @@ To customize the UI:
 - Follow this format:
   `[type]: <short description>`  
   Examples:  
+  - `added : new file / folder added, created`
+  - `removed : removed file / deleted file that has been pushed into repo`
+  - `modified : existing file / folder modification` 
   - `feat: add user registration module`  
   - `fix: resolve fund calculation bug`  
   - `docs: update README with setup steps`
@@ -119,6 +124,7 @@ To customize the UI:
 
 ### 4. Merging to `main`
 
+- **First show code for code review untill review is done DONT merge into the main**
 - Only merge after approval from chat gruop
 
 &nbsp;
