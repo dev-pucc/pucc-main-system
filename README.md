@@ -1,66 +1,204 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Premier University Computer Club Main System (Developer guide)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+&nbsp;
 
-## About Laravel
+## **1. Prerequisites**
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+1. **PHP** : PHP 8.2.12
+2. **Composer** : version 2.7.6
+3. **Node.js** and **npm** : v20.11.1
+4. **Database** : MySQL (phpmyadmin)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+&nbsp;
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## **2. Project Setup**
 
-## Learning Laravel
+1. **Clone the Repository:**
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+   ```bash
+   git clone https://github.com/dev-pucc/pucc-main-system.git
+   cd pucc-main-system
+   ```
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+2. **Install Dependencies:**
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+   ```bash
+   composer install
+   npm install
+   ```
 
-## Laravel Sponsors
+3. **Environment Configuration:**
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+    If you are using Git Bash or the Command Prompt (CMD) on Windows, the `cp` command to copy `.env.example` to `.env` may not work because `cp` is a Linux/Unix command. Here's the alternative:
 
-### Premium Partners
+    - Using Command Prompt (CMD):
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+    ```cmd
+    copy .env.example .env
+    ```
 
-## Contributing
+    - Using Git Bash:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+    ```bash
+    cp .env.example .env
+    ```
 
-## Code of Conduct
+4. **Set up database credentials in the `.env` file:**
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+    ```bash
+        DB_CONNECTION=mysql
+        DB_HOST=127.0.0.1
+        DB_PORT=3306
+        DB_DATABASE=your_database_name
+        DB_USERNAME=your_username
+        DB_PASSWORD=your_password
+    ```
 
-## Security Vulnerabilities
+5. **Generate Application Key:**
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+   ```bash
+    php artisan key:generate
+   ```
 
-## License
+6. **Run Database Migrations:**
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+   ```bash
+    php artisan migrate
+   ```
+
+7. **Start the Development Server:**
+
+   ```bash
+    php artisan serve
+   ```
+
+&nbsp;
+
+## **3. Authentication Setup**
+
+This project uses **Laravel UI v4.x** for authentication scaffolding.
+
+To customize the UI:
+
+1. Generate authentication scaffolding:
+
+   ```bash
+    php artisan ui bootstrap --auth
+   ```
+
+2. Rebuild assets:
+
+   ```bash
+   npm run dev
+   ```
+
+---
+
+## **3. Git Workflow and Collaboration Rules**
+
+### 1. Branching Strategy
+
+- The `main` branch is for production-ready code.
+- **Make new branch** branch is for staging new features and testing. Name brach according to the features.
+
+### 2. Commit Messages
+
+**Contact on chat group before commiting**
+
+- Follow this format:
+  `[type]: <short description>`  
+  Examples:  
+  - `feat: add user registration module`  
+  - `fix: resolve fund calculation bug`  
+  - `docs: update README with setup steps`
+
+### 3. Pull Request Guidelines
+
+- Submit a PR to merge your branch into `main`
+- Add a clear description of your changes.
+
+### 4. Merging to `main`
+
+- Only merge after approval from chat gruop
+
+&nbsp;
+
+## **4. Rules for Collaboration**
+
+1. Always **sync your branch** with `develop` **if more than one people working in same features** And discuss and track each others codes while woriking on same features:
+2. Use proper **naming conventions** for variables, functions, and classes.
+3. Avoid committing large or unnecessary files (e.g., `node_modules`, `.env`, IDE settings).
+4. Document your changes clearly in comments and commit messages.
+5. Report bugs or issues in the project tracker promptly.
+
+&nbsp;
+
+## **5. Code Writing Rules**
+
+To ensure code consistency, readability, and maintainability, all developers must adhere to the following coding standards:
+
+### 1. **Spacing**
+
+- Before every section of code add 5 new lines and a comment "Section_name START"
+- After every section of code add 5 new lines and a comment "Section_name END"
+
+### 2. **Follow PSR Standards**
+
+- Use **camelCase** for variables and method names.
+- Use **PascalCase** for controller and class names.
+- Use **snake_case** for database columns and table names.
+
+### 3. **File and Folder Structure**
+
+- **One folder per feature:** Create a dedicated folder for each feature within the `app/Http Controllers` and `resources/views` directories.
+
+Example
+
+```bash
+       app/
+       ├── Http/
+       │   ├── Controllers/
+       │   │   ├── User/
+       │   │   │   ├── ProfileController.php
+       │   │   ├── Fund/
+       │   │   │   ├── FundController.php
+```
+
+- Group related files together, such as controllers, views, services, and tests for a specific feature.
+
+### 4. **Controller Naming**
+
+- Use singular names for controllers, e.g., `UserController`, `FundController`.
+
+### 5. **Route Organization**
+
+- Put the routes in mentioned postion. Dont touch any code that is not related to you.
+
+### 6. **Naming Conventions**
+
+- **Variables:** Use descriptive names in `camelCase` (e.g., `$userEmail`, `$totalFunds`).
+- **Methods:** Name methods based on their functionality, using `camelCase` (e.g., `getUserDetails`, `calculateFundBalance`).
+- **Classes:** Use `PascalCase` for classes (e.g., `UserService`, `FundController`).
+
+### 7. **Database**
+
+- Table names must be plural (`users`, `funds`, `transactions`).
+- Columns must use `snake_case` (e.g., `user_id`, `total_amount`).
+
+### 8. **Blade Templates**
+
+- Use `snake_case` for view file names and organize views in folders based on features.
+- Example:
+
+```bash
+       resources/views/
+       ├── user/
+       │   ├── profile.blade.php
+       │   ├── settings.blade.php
+       ├── fund/
+       │   ├── overview.blade.php
+   ```
+
+### 9. **Testing**
+
+- Do manual testing of everyting that is interaction able
