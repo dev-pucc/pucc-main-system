@@ -20,3 +20,30 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// USER ROUTE START
+
+// USER ROUTE END
+
+// RECRUITEMENT OFFICER ROUTE START
+
+// RECRUITEMENT OFFICER ROUTE END
+
+
+//ADMIN ROUTE START
+
+//ADMIN ROUTE END
+
+//SECRETARY ROUTE START
+
+//SECRETARY ROUTE END
+
+
+//DIVISION LEAD ROUTE START
+
+//DIVISION LEAD ROUTE END
+
+
+//TRESURUR ROUTE START
+
+//TRESURUR LEAD ROUTE END
