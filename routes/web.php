@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RecruitmentOfficer\RegistrationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,7 +26,18 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // USER ROUTE END
 
+
+
 // RECRUITEMENT OFFICER ROUTE START
+
+
+    //route for displaying registration form
+    Route::get('req/register', [RegistrationController::class, 'register'])->name('recruitment_officer.register');
+
+    //route for store registration data
+    Route::post('req/register-process', [RegistrationController::class, 'registerProcess'])->name('recruitment_officer.registerProcess');
+
+
 
 // RECRUITEMENT OFFICER ROUTE END
 
