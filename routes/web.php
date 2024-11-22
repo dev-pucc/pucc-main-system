@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\RecruitmentOfficer\RegistrationController;
+use App\Http\Controllers\User\UserController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,9 +24,19 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+
 // USER ROUTE START
 
+Route::controller(UserController::class)->prefix('users')->group(function () {
+    Route::get('/', 'users')->name('users');
+    Route::get('/{id}/edit', 'edit')->name('users.edit');
+    Route::put('/{id}', 'update')->name('users.update');
+    Route::delete('/{id}', 'destroy')->name('users.destroy');
+});
+
 // USER ROUTE END
+
+
 
 
 
