@@ -24,8 +24,13 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
+            'club_id' => fake()->numberBetween(10000, 99999),
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
+            'mobile' => fake()->unique()->numerify('###########'),
+            'role' => fake()->randomElement(['admin', 'user', 'recruitement_officer']),
+            'division'=> fake()->randomElement(['development','devOps','gaming']),
+            'user_approved'=> fake()->boolean(),
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
