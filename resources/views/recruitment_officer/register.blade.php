@@ -99,8 +99,7 @@
                             <select class="form-select form-select-lg @error('role') is-invalid @enderror" name="role" id="role">
                                 <option disabled selected>Select Role</option>
                                 <option {{old('role')=='user' ? 'selected' : '' }} value="user">User</option>
-                                <option {{old('role')=='developer' ? 'selected' : '' }} value="developer">Developer</option>
-                                <option {{old('role')=='developer_lead' ? 'selected' : '' }} value="developer_lead">Division Lead</option>
+                                <option {{old('role')=='developer_lead' ? 'selected' : '' }} value="division_lead">Division Lead</option>
                                 <option {{old('role')=='treasurer' ? 'selected' : '' }} value="treasurer">Treasurer</option>
                                 <option {{old('role')=='recruitment_officer' ? 'selected' : '' }} value="recruitment_officer">Recruitment Officer</option>
                                 <option {{old('role')=='admin' ? 'selected' : '' }} value="admin">Admin</option>
