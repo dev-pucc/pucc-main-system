@@ -49,6 +49,22 @@
 
 
 
+
+                        <!-- student_id field -->
+                        <div class="mb-3">
+                            <label for="club_id" class="form-label">Student ID</label>
+                            <input type="text" value="{{old('club_id')}}" class="form-control form-control-lg @error('club_id') is-invalid @enderror" name="club_id" id="club_id" placeholder="Enter your id">
+                            
+                            <!-- checking error for displaying error message -->
+                            @error('club_id')
+                                <p class="invalid-feedback">{{$message}}</p>
+                            @enderror
+                        </div>
+
+
+
+
+
                         <!-- email field -->
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
@@ -66,7 +82,7 @@
                         <!-- mobile field -->
                         <div class="mb-3">
                             <label for="mobile" class="form-label">Mobile</label>
-                            <input type="number" value="{{old('mobile')}}" class="form-control form-control-lg @error('mobile') is-invalid @enderror" name="mobile" id="mobile" placeholder="Enter your mobile number">
+                            <input type="text" value="{{old('mobile')}}" class="form-control form-control-lg @error('mobile') is-invalid @enderror" name="mobile" id="mobile" placeholder="Enter your mobile number">
                         
                             <!-- checking error for displaying error message -->
                             @error('mobile')
@@ -82,13 +98,13 @@
                             <label for="role" class="form-label">Role</label>
                             <select class="form-select form-select-lg @error('role') is-invalid @enderror" name="role" id="role">
                                 <option disabled selected>Select Role</option>
-                                <option value="user">User</option>
-                                <option value="developer">Developer</option>
-                                <option value="developer_lead">Division Lead</option>
-                                <option value="treasurer">Treasurer</option>
-                                <option value="recruitment_officer">Recruitment Officer</option>
-                                <option value="admin">Admin</option>
-                                <option value="secretary">Secretary</option>
+                                <option {{old('role')=='user' ? 'selected' : '' }} value="user">User</option>
+                                <option {{old('role')=='developer' ? 'selected' : '' }} value="developer">Developer</option>
+                                <option {{old('role')=='developer_lead' ? 'selected' : '' }} value="developer_lead">Division Lead</option>
+                                <option {{old('role')=='treasurer' ? 'selected' : '' }} value="treasurer">Treasurer</option>
+                                <option {{old('role')=='recruitment_officer' ? 'selected' : '' }} value="recruitment_officer">Recruitment Officer</option>
+                                <option {{old('role')=='admin' ? 'selected' : '' }} value="admin">Admin</option>
+                                <option {{old('role')=='secretary' ? 'selected' : '' }} value="secretary">Secretary</option>
                             </select>
 
                            <!-- checking error for displaying error message -->
@@ -106,12 +122,12 @@
                             <label for="division" class="form-label">Division</label>
                             <select class="form-select form-select-lg @error('division') is-invalid @enderror" id="division" name="division">
                                 <option disabled selected>Select Division</option>
-                                <option value="competitive_programming">Competitive Programming</option>
-                                <option value="deep_learning">Deep Learning</option>
-                                <option value="devops">DevOps</option>
-                                <option value="networking">Networking</option>
-                                <option value="gaming">Gaming</option>
-                                <option value="development">Development</option>
+                                <option {{old('division') == 'competitive_programming'  ? 'selected' : ''}} value="competitive_programming">Competitive Programming</option>
+                                <option {{old('division') == 'deep_learning'  ? 'selected' : ''}} value="deep_learning">Deep Learning</option>
+                                <option {{old('division') == 'devops'  ? 'selected' : ''}} value="devops">DevOps</option>
+                                <option {{old('division') == 'networking'  ? 'selected' : ''}} value="networking">Networking</option>
+                                <option {{old('division') == 'gaming'  ? 'selected' : ''}} value="gaming">Gaming</option>
+                                <option {{old('division') == 'development'  ? 'selected' : ''}} value="development">Development</option>
                             </select>
 
                             <!-- checking error for displaying error message -->
