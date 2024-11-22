@@ -34,6 +34,8 @@ class RegistrationController extends Controller
             'password'=> 'required|min:8',
         ],[
             'club_id.unique'=>'This student id is already registered.',
+            'club_id.required'=>'student id is required.',
+            'club_id.numeric'=>'student id must be a number.',
         ]);
 
 
