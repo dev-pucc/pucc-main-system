@@ -32,10 +32,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
     //route for displaying registration form
-    Route::get('req/register', [RegistrationController::class, 'register'])->name('recruitment_officer.register');
+    Route::get('/register', [RegistrationController::class, 'register'])->name('recruitment_officer.register');
 
     //route for store registration data
-    Route::post('req/register-process', [RegistrationController::class, 'registerProcess'])->name('recruitment_officer.registerProcess');
+    Route::post('/register-process', [RegistrationController::class, 'registerProcess'])->name('recruitment_officer.registerProcess');
 
 
 
