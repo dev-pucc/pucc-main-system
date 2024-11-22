@@ -4,12 +4,12 @@
     @include('layouts.navbar')
 @endsection
 
-//users list START
+<!-- users list START -->
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10 col-sm-6">
             @if (session('success'))
                 <div class="alert alert-success">
                     {{ session('success') }}
@@ -26,7 +26,7 @@
                 <div class="card-header"><h1>List of users</h1></div>
 
                 <div class="card-body">
-                    <table class="table">
+                    <table class="table table-responsive">
                         <thead>
                           <tr>
                             <th scope="col">#</th>
@@ -71,4 +71,4 @@
 </div>
 @endsection
 
-//users list END
+<!-- users list END -->

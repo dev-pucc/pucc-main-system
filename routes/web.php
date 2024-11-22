@@ -43,11 +43,10 @@ Route::controller(UserController::class)->prefix('users')->group(function () {
 // RECRUITEMENT OFFICER ROUTE START
 
 
-    //route for displaying registration form
-    Route::get('/register', [RegistrationController::class, 'register'])->name('recruitment_officer.register');
-
-    //route for store registration data
-    Route::post('/register-process', [RegistrationController::class, 'registerProcess'])->name('recruitment_officer.registerProcess');
+Route::controller(RegistrationController::class)->group(function () {
+   Route::get('/register', 'register')->name('recruitment_officer.register');
+   Route::post('/register-process','registerProcess')->name('recruitment_officer.registerProcess');
+});
 
 
 
