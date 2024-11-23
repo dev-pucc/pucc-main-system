@@ -4,12 +4,20 @@
     @include('layouts.navbar')
 @endsection
 
+<<<<<<< HEAD
 {{-- users list START --}}
+=======
+<!-- users list START -->
+>>>>>>> upstream/main
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
+<<<<<<< HEAD
         <div class="col-md-12">
+=======
+        <div class="col-md-10 col-sm-6">
+>>>>>>> upstream/main
             @if (session('success'))
                 <div class="alert alert-success">
                     {{ session('success') }}
@@ -34,8 +42,12 @@
                     <a href="{{route('users.pending')}}" class="btn btn-warning" type="button">Pending list</a>
                 </div>
                 <div class="card-body">
+<<<<<<< HEAD
                 @if (count($users) > 0)
                     <table class="table">
+=======
+                    <table class="table table-responsive">
+>>>>>>> upstream/main
                         <thead>
                           <tr>
                             <th scope="col">#</th>
@@ -66,7 +78,7 @@
                                     </form>
 
                                     <a class="btn btn-warning pl-3" href="{{ route('users.edit', $user->id) }}">Edit</a>
-                                    <a class="btn btn-success pl-3" type="button">profile</a>
+                                    <a class="btn btn-success pl-3" href="{{ route('users.profile', $user->id) }}" >profile</a>
                                 </td>
                               </tr>
                             @endforeach
@@ -85,4 +97,8 @@
 </div>
 @endsection
 
+<<<<<<< HEAD
 {{-- users list END --}}
+=======
+<!-- users list END -->
+>>>>>>> upstream/main

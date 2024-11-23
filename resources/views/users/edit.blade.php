@@ -6,7 +6,11 @@
 @endsection
 
 
+<<<<<<< HEAD
 {{-- user edit START --}}
+=======
+<!-- user edit START -->
+>>>>>>> upstream/main
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -56,4 +60,8 @@
 
 
 @endsection
+<<<<<<< HEAD
 {{-- user edit END --}}
+=======
+<!-- user edit END -->
+>>>>>>> upstream/main

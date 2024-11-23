@@ -115,4 +115,22 @@ class UserController extends Controller
 
     //user Pending method END
 
+
+
+    
+    //users profile method START
+
+    public function profile($id){
+
+        $user=DB::table('users')->where('id',$id)->first();
+
+        if(!$user){
+            abort(404,'User not found');
+        }
+
+        return view('users.profile',compact('user'));
+    }
+
+    //users profile method END
+
 }
