@@ -56,7 +56,7 @@
                                     </form>
 
                                     <a class="btn btn-warning pl-3" href="{{ route('users.edit', $user->id) }}">Edit</a>
-                                    <a class="btn btn-success pl-3" type="button">profile</a>
+                                    <a class="btn btn-success pl-3" href="{{ route('users.profile', $user->id) }}" >profile</a>
                                 </td>
                               </tr>
                             @endforeach

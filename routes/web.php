@@ -32,6 +32,7 @@ Route::controller(UserController::class)->prefix('users')->group(function () {
     Route::get('/{id}/edit', 'edit')->name('users.edit');
     Route::put('/{id}', 'update')->name('users.update');
     Route::delete('/{id}', 'destroy')->name('users.destroy');
+    Route::get('/profile/{id}','profile')->name('users.profile');
 });
 
 // USER ROUTE END
