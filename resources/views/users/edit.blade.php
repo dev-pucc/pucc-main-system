@@ -6,7 +6,7 @@
 @endsection
 
 
-//user edit START
+{{-- user edit START --}}
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -56,4 +56,4 @@
 
 
 @endsection
-//user edit END
+{{-- user edit END --}}

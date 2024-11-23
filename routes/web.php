@@ -28,6 +28,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::controller(UserController::class)->prefix('users')->group(function () {
     Route::get('/', 'users')->name('users');
+    Route::get('/pending', 'pendingUsers')->name('users.pending');
+    Route::get('/search', 'users')->name('users.search');
     Route::get('/{id}/edit', 'edit')->name('users.edit');
     Route::put('/{id}', 'update')->name('users.update');
     Route::delete('/{id}', 'destroy')->name('users.destroy');

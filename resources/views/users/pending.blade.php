@@ -4,7 +4,7 @@
     @include('layouts.navbar')
 @endsection
 
-{{-- users list START --}}
+{{-- users pending list START --}}
 
 @section('content')
 <div class="container">
@@ -24,17 +24,11 @@
 
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
-                    <h1>List of users</h1>
-                    <form action="{{ route('users.search') }}" method="GET" class="d-flex w-50">
-                        <input type="text" name="search" class="form-control" placeholder="Search users" value="{{ request('search') }}">
-                        <button type="submit" class="btn btn-primary">Search</button>
-                        <a href="{{route('users')}}" type="button" class="btn btn-danger">reset</a>
-
-                    </form>
-                    <a href="{{route('users.pending')}}" class="btn btn-warning" type="button">Pending list</a>
+                    <h1>List of pending users</h1>
+                    <a href="{{route('users')}}" class="btn btn-danger" type="button">Back</a>
                 </div>
                 <div class="card-body">
-                @if (count($users) > 0)
+                @if (count($pending_users) > 0)
                     <table class="table">
                         <thead>
                           <tr>
@@ -49,7 +43,7 @@
                         </thead>
                         <tbody>
 
-                            @foreach ($users as $user)
+                            @foreach ($pending_users as $user)
                             <tr>
 
                                 <th scope="row">{{$loop->index + 1}}</th>
@@ -64,9 +58,7 @@
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger">Delete</button>
                                     </form>
-
-                                    <a class="btn btn-warning pl-3" href="{{ route('users.edit', $user->id) }}">Edit</a>
-                                    <a class="btn btn-success pl-3" type="button">profile</a>
+                                    <a class="btn btn-success pl-3" type="button">Approve</a>
                                 </td>
                               </tr>
                             @endforeach
@@ -85,4 +77,4 @@
 </div>
 @endsection
 
-{{-- users list END --}}
+{{-- users pending list END --}}
