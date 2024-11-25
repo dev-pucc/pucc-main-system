@@ -21,7 +21,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+//Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -82,6 +82,12 @@ Route::controller(RegistrationController::class)->group(function () {
 
 
 //TRESURUR ROUTE START
-
+Route::get('/payment/{page}', [App\Http\Controllers\Payment\PaymentController::class, 'create']);
+Route::post('/payment', [App\Http\Controllers\Payment\PaymentController::class, 'store'])->name('payments.store');
+Route::get('/payments', [App\Http\Controllers\Payment\PaymentController::class, 'index'])->name('payments.index');
+Route::get('/payments/show', [App\Http\Controllers\Payment\PaymentController::class, 'show'])->name('payments.show');
+Route::get('payments/{id}/edit', [App\Http\Controllers\Payment\PaymentController::class, 'edit'])->name('payments.edit');
+Route::delete('payments/{id}', [App\Http\Controllers\Payment\PaymentController::class, 'destroy'])->name('payments.destroy');
+Route::put('payments/{id}', [App\Http\Controllers\Payment\PaymentController::class, 'update'])->name('payments.update');
 //TRESURUR LEAD ROUTE END
 
