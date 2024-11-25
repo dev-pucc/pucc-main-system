@@ -4,10 +4,11 @@
 
 ## **1. Prerequisites**
 
-1. **PHP** : PHP 8.2.12
-2. **Composer** : version 2.7.6
-3. **Node.js** and **npm** : v20.11.1
-4. **Database** : MySQL (phpmyadmin)
+1. **Laravel**: 10.0
+2. **PHP** : PHP 8.2.12
+3. **Composer** : version 2.7.6
+4. **Node.js** and **npm** : v20.11.1
+5. **Database** : MySQL (phpmyadmin)
 
 &nbsp;
 

@@ -12,6 +12,9 @@
                 <div class="card">
                     <h3 class="card-header"><b>Update User</b></h3>
                     <div class="card-body card">
+
+
+                        
                         @if(session()->has('success'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 <strong class="text-dark">{{session()->get('success')}}!</strong>
@@ -24,6 +27,9 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                         @endif
+
+                        
+                        
                         <form action="{{ route('admin.updateUserPost',$user->id) }}" method="post" enctype="multipart/form-data">
                         @csrf
                             <div class="col-12">

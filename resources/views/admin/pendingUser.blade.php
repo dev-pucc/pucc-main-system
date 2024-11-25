@@ -7,6 +7,9 @@
 
 @section('content')
 <div class="container mt-3">
+            
+            
+  
             @if(session()->has('success'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     <strong class="text-dark">{{session()->get('success')}}!</strong>
@@ -19,6 +22,8 @@
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             @endif
+            
+
             <form method="GET" action="{{ route('admin.searchUser') }}" class="mb-4">
               <div class="row">
                   <div class="col-md-10">
@@ -29,6 +34,8 @@
                   </div>
               </div>
           </form>
+
+
     <h2><b>Pending User</b></h2>
     <table class="table table-bordered table-sm">
       <thead class="table-success">

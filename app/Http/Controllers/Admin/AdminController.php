@@ -12,6 +12,8 @@ class AdminController extends Controller
         $users = DB::table('users')->where('user_approved','0')->get();
         return view('admin.pendingUser',['users'=>$users]);
     }
+
+
     public function approvedUser(string $id){
         $user_approve = DB::table('users')->where('id',$id)->update([
             'user_approved' => true,
@@ -23,6 +25,8 @@ class AdminController extends Controller
                 return redirect()->back()->with('error','User not approved');
             }
     }
+
+
     public function deleteUser(string $id){
         $user_delete = DB::table('users')->where('id',$id)->delete();
             if($user_delete){
@@ -32,11 +36,15 @@ class AdminController extends Controller
                 return redirect()->back()->with('error','User not delete');
             }
     }
+
+
     public function updateUser(string $id)
     {
         $user = DB::table('users')->where('id',$id)->first();
         return view('admin.updateUser',['user'=>$user]);
     }
+
+
     public function updateUserPost(Request $req, string $id)
     {
         $user = DB::table('users')->where('id',$id)->update([
@@ -52,6 +60,8 @@ class AdminController extends Controller
             return redirect()->back()->with('error','User information not update');
         }
     }
+
+    
     public function searchUser(Request $request)
     {
         $search = $request->input('search');
