@@ -35,7 +35,14 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //ADMIN ROUTE END
 
 //SECRETARY ROUTE START
+    //calander start
+    Route::get('/Secretary/Calendar', function () {
+        return view('calander/view'); // Assuming your Blade file is `calendar.blade.php`
+    })->name('secretary.calendar');
 
+
+
+    //calander end
 //SECRETARY ROUTE END
 
 
