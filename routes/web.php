@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\DivisionLead\MeetingController;
 use App\Http\Controllers\DivisionLead\CurriculumController;
+use App\Http\Controllers\NoticeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -74,6 +75,23 @@ Route::controller(RegistrationController::class)->group(function () {
 //ADMIN ROUTE END
 
 //SECRETARY ROUTE START
+    //calander start
+    Route::get('/Secretary', function () {
+        return view('calander/view'); // Assuming your Blade file is `calendar.blade.php`
+    })->name('secretary.calendar');
+
+
+
+    //calander end
+    //notice start
+
+        Route::get('/notice/create', [NoticeController::class, 'create'])->name('notice.create');
+        Route::post('/notice/store', [NoticeController::class, 'store'])->name('notice.store');
+
+        Route::get('/notices', [NoticeController::class, 'index'])->name('notice.index');
+        Route::get('/notices/{id}', [NoticeController::class, 'show'])->name('notice.show');
+
+    //notice end
 
 //SECRETARY ROUTE END
 
