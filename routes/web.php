@@ -99,26 +99,22 @@ Route::controller(UserController::class)->prefix('users')->group(function () {
 
 //DIVISION LEAD ROUTE START
 
+//MeetingController start
 
-// Route for the division lead index page
-Route::get('/meetingIndex', function () {
-    return view('division_lead.index');
-});
-// Grouping routes related to meetings
-Route::prefix('meetings')->group(function () {
-    // Show the list of all meetings
-    Route::get('/', [MeetingController::class, 'showMeetings'])->name('meetings.index');   
-    // Show students in a specific meeting
-    Route::get('{id}/students', [MeetingController::class, 'getMeetingStudents']);   
-    // Store a new meeting
-    Route::post('/store', [MeetingController::class, 'store'])->name('meetings.store');   
-    // Terminate a specific meeting
-    Route::post('{id}/terminate', [MeetingController::class, 'terminateMeeting'])->name('meetings.terminate');    
-});
+// Show the list of all meetings
+Route::get('/meetings', [MeetingController::class, 'showMeetings'])->name('meetings.index');
+// Show students in a specific meeting
+Route::get('/meetings/{id}/students', [MeetingController::class, 'getMeetingStudents']);
+ // Store a new meeting
+Route::post('/meetings/store', [MeetingController::class, 'store'])->name('meetings.store');
+// Terminate a specific meeting
+Route::post('/meetings/{id}/terminate', [MeetingController::class, 'terminateMeeting'])->name('meetings.terminate');
 // Check the meeting status
-Route::get('/meetingIndex', [MeetingController::class, 'checkMeetingStatus'])->name('meetings.status');
+Route::get('/meetings/meetingIndex', [MeetingController::class, 'checkMeetingStatus'])->name('meetings.status');
 // Route for storing attendance for a specific meeting
-Route::post('/attendance/{meetingId}', [MeetingController::class, 'storeAttendance'])->name('attendance.store');
+Route::post('/meetings/attendance/{meetingId}', [MeetingController::class, 'storeAttendance'])->name('attendance.store');
+
+//MeetingController end
 
 
 // Curriculum Resource Routes
@@ -147,4 +143,3 @@ Route::get('payments/{id}/edit', [PaymentController::class, 'edit'])->name('paym
 Route::delete('payments/{id}', [PaymentController::class, 'destroy'])->name('payments.destroy');
 Route::put('payments/{id}', [PaymentController::class, 'update'])->name('payments.update');
 //TRESURUR LEAD ROUTE END
-
