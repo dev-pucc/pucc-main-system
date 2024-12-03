@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\RecruitmentOfficer;
+namespace App\Http\Controllers\UserRegistration;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -14,7 +14,7 @@ class RegistrationController extends Controller
     //function for displaying registration form
     public function register(){
 
-        return view('recruitment_officer.register');
+        return view('user_registration.register');
     }
 
 
@@ -54,14 +54,14 @@ class RegistrationController extends Controller
 
             
             return redirect()
-                    ->route('recruitment_officer.register')
+                    ->route('user_registration.register')
                     ->with('success','User created successfully.Awaiting admin approval.');
             
         }else{
 
             //if validation fails then it will return back with errors
             return redirect()
-                    ->route('recruitment_officer.register')
+                    ->route('user_registration.register')
                     ->withErrors($validator)
                     ->withInput($request->only('name','email', 'mobile','club_id','role','division'));
 

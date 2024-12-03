@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\RecruitmentOfficer\RegistrationController;
+use App\Http\Controllers\UserRegistration\RegistrationController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\DivisionLead\MeetingController;
 use App\Http\Controllers\DivisionLead\CurriculumController;
 use App\Http\Controllers\NoticeController;
+use App\Http\Controllers\Payment\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,10 +61,10 @@ Route::controller(UserController::class)->prefix('users')->group(function () {
 // RECRUITEMENT OFFICER ROUTE START
 
 
-Route::controller(RegistrationController::class)->group(function () {
-   Route::get('/register', 'register')->name('recruitment_officer.register');
-   Route::post('/register-process','registerProcess')->name('recruitment_officer.registerProcess');
-});
+
+   Route::get('/register',[RegistrationController::class, 'register'])->name('user_registration.register');
+   Route::post('/register-process',[RegistrationController::class, 'registerProcess'])->name('user_registration.registerProcess');
+
 
 
 
@@ -77,7 +78,7 @@ Route::controller(RegistrationController::class)->group(function () {
 //SECRETARY ROUTE START
     //calander start
     Route::get('/Secretary', function () {
-        return view('calander/view'); // Assuming your Blade file is `calendar.blade.php`
+        return view('calander/index'); // Assuming your Blade file is `calendar.blade.php`
     })->name('secretary.calendar');
 
 
@@ -138,12 +139,12 @@ Route::get('/networking', [CurriculumController::class, 'networking'])->name('ne
 
 
 //TRESURUR ROUTE START
-Route::get('/payment/{page}', [App\Http\Controllers\Payment\PaymentController::class, 'create']);
-Route::post('/payment', [App\Http\Controllers\Payment\PaymentController::class, 'store'])->name('payments.store');
-Route::get('/payments', [App\Http\Controllers\Payment\PaymentController::class, 'index'])->name('payments.index');
-Route::get('/payments/show', [App\Http\Controllers\Payment\PaymentController::class, 'show'])->name('payments.show');
-Route::get('payments/{id}/edit', [App\Http\Controllers\Payment\PaymentController::class, 'edit'])->name('payments.edit');
-Route::delete('payments/{id}', [App\Http\Controllers\Payment\PaymentController::class, 'destroy'])->name('payments.destroy');
-Route::put('payments/{id}', [App\Http\Controllers\Payment\PaymentController::class, 'update'])->name('payments.update');
+Route::get('/payment/{page}', [PaymentController::class, 'create']);
+Route::post('/payment', [PaymentController::class, 'store'])->name('payments.store');
+Route::get('/payments', [PaymentController::class, 'index'])->name('payments.index');
+Route::get('/payments/show', [PaymentController::class, 'show'])->name('payments.show');
+Route::get('payments/{id}/edit', [PaymentController::class, 'edit'])->name('payments.edit');
+Route::delete('payments/{id}', [PaymentController::class, 'destroy'])->name('payments.destroy');
+Route::put('payments/{id}', [PaymentController::class, 'update'])->name('payments.update');
 //TRESURUR LEAD ROUTE END
 

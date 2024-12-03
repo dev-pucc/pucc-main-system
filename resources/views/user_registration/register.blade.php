@@ -25,10 +25,10 @@
 
 
                     <!-- include message file for success and error message -->
-                    @include('recruitment_officer.message')
+                    @include('user_registration.message')
 
 
-                    <form action="{{route('recruitment_officer.registerProcess')}}" method="POST">
+                    <form action="{{route('user_registration.registerProcess')}}" method="POST">
 
                         <!-- added csrf token -->
                         @csrf
