@@ -11,6 +11,12 @@
     <!-- Page Content -->
     <div class="container mt-5">
         <h1 align="center">Welcome to the Division Lead End</h1><hr>
+            @if(session()->has('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong class="text-dark">{{session()->get('success')}}!</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
         <div class="container mt-5">
             <ul class="nav nav-tabs">
                 <li class="nav-item">
