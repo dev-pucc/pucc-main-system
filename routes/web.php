@@ -7,19 +7,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\DivisionLead\MeetingController;
 use App\Http\Controllers\DivisionLead\CurriculumController;
-use App\Http\Controllers\NoticeController;
+use App\Http\Controllers\Notice\NoticeController;
 use App\Http\Controllers\Payment\PaymentController;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
 Route::get('/', function () {
     return view('welcome');
@@ -41,16 +30,15 @@ Route::get('/admin/search-user', [AdminController::class, 'searchUser'])->name('
 
 
 // USER ROUTE START
+ 
+Route::get('/users', [UserController::class, 'users'])->name('users');
+Route::get('/users/pending', [UserController::class, 'pendingUsers'])->name('users.pending');
+Route::get('/users/search', [UserController::class, 'users'])->name('users.search');
+Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
+Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
+Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
+Route::get('/users/profile/{id}', [UserController::class, 'profile'])->name('users.profile');
 
-Route::controller(UserController::class)->prefix('users')->group(function () {
-    Route::get('/', 'users')->name('users');
-    Route::get('/pending', 'pendingUsers')->name('users.pending');
-    Route::get('/search', 'users')->name('users.search');
-    Route::get('/{id}/edit', 'edit')->name('users.edit');
-    Route::put('/{id}', 'update')->name('users.update');
-    Route::delete('/{id}', 'destroy')->name('users.destroy');
-    Route::get('/profile/{id}','profile')->name('users.profile');
-});
 
 // USER ROUTE END
 
@@ -61,12 +49,8 @@ Route::controller(UserController::class)->prefix('users')->group(function () {
 // RECRUITEMENT OFFICER ROUTE START
 
 
-
-   Route::get('/register',[RegistrationController::class, 'register'])->name('user_registration.register');
-   Route::post('/register-process',[RegistrationController::class, 'registerProcess'])->name('user_registration.registerProcess');
-
-
-
+Route::get('/register',[RegistrationController::class, 'register'])->name('user_registration.register');
+Route::post('/register-process',[RegistrationController::class, 'registerProcess'])->name('user_registration.registerProcess');
 
 // RECRUITEMENT OFFICER ROUTE END
 
@@ -75,24 +59,26 @@ Route::controller(UserController::class)->prefix('users')->group(function () {
 
 //ADMIN ROUTE END
 
+
 //SECRETARY ROUTE START
-    //calander start
-    Route::get('/Secretary', function () {
-        return view('calander/index'); // Assuming your Blade file is `calendar.blade.php`
-    })->name('secretary.calendar');
+
+//calander start
+
+Route::get('/Secretary', function () {
+    return view('calander/index'); 
+})->name('secretary.calendar');
+
+//calander end
 
 
+//notice start
 
-    //calander end
-    //notice start
+Route::get('/notice/create', [NoticeController::class, 'create'])->name('notice.create');
+Route::post('/notice/store', [NoticeController::class, 'store'])->name('notice.store');
+Route::get('/notice', [NoticeController::class, 'index'])->name('notice.index');
+Route::get('/notice/{id}', [NoticeController::class, 'show'])->name('notice.show');
 
-        Route::get('/notice/create', [NoticeController::class, 'create'])->name('notice.create');
-        Route::post('/notice/store', [NoticeController::class, 'store'])->name('notice.store');
-
-        Route::get('/notices', [NoticeController::class, 'index'])->name('notice.index');
-        Route::get('/notices/{id}', [NoticeController::class, 'show'])->name('notice.show');
-
-    //notice end
+//notice end
 
 //SECRETARY ROUTE END
 
