@@ -14,7 +14,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Auth::routes();
+Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -49,7 +49,7 @@ Route::get('/users/profile/{id}', [UserController::class, 'profile'])->name('use
 // RECRUITEMENT OFFICER ROUTE START
 
 
-Route::get('/register',[RegistrationController::class, 'register'])->name('user_registration.register');
+Route::get('/userRegister',[RegistrationController::class, 'register'])->name('user_registration.register');
 Route::post('/register-process',[RegistrationController::class, 'registerProcess'])->name('user_registration.registerProcess');
 
 // RECRUITEMENT OFFICER ROUTE END
