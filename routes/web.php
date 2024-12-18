@@ -129,3 +129,7 @@ Route::get('payments/{id}/edit', [PaymentController::class, 'edit'])->name('paym
 Route::delete('payments/{id}', [PaymentController::class, 'destroy'])->name('payments.destroy');
 Route::put('payments/{id}', [PaymentController::class, 'update'])->name('payments.update');
 //TRESURUR LEAD ROUTE END
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
