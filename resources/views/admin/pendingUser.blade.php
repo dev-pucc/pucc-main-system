@@ -42,6 +42,7 @@
         <tr>
           <th>Name</th>
           <th>Phone</th>
+          <th>Club ID</th>
           <th>Email</th>
           <th>Division</th>
           <th>Action</th>
@@ -52,6 +53,7 @@
         <tr>
           <td>{{$users->name}}</td>
           <td>{{$users->mobile}}</td>
+          <td>{{$users->club_id}}</td>
           <td>{{$users->email}}</td>
           <td>{{$users->division}}</td>
           <td>
