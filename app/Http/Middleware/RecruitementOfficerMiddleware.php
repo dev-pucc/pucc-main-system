@@ -16,13 +16,13 @@ class RecruitementOfficerMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        // Check if the user is authenticated and is an admin
+        // Check if the user is authenticated and is an recruitement officer
         if (Auth::check() && Auth::user()->role == 'recruitement officer') {
-            return $next($request); // Allow access if the user is an admin
+            return $next($request); // Allow access if the user is an recruitement officer
         }
 
-        // If not an admin, redirect to the home page or a custom error page
-        return back()->with('error', 'You do not have admin access');
+        // If not an recruitement officer, redirect to the back
+        return back()->with('error', 'You do not have recruitement officer access');
 
     }
 }

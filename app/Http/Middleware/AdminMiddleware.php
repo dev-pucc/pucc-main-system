@@ -21,7 +21,7 @@ class AdminMiddleware
             return $next($request); // Allow access if the user is an admin
         }
 
-        // If not an admin, redirect to the home page or a custom error page
+        // If not an admin, redirect to the back
         return back()->with('error', 'You do not have admin access');
         
     }
