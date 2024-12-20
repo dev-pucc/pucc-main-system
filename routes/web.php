@@ -21,39 +21,36 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //AdminController start
-Route::get('/admin/pending-user', [AdminController::class, 'index'])->name('admin.pendingUser');
-Route::get('/admin/approve-user/{id}', [AdminController::class, 'approvedUser'])->name('admin.approvedUser');
-Route::get('/admin/delete-user/{id}', [AdminController::class, 'deleteUser'])->name('admin.deleteUser');
-Route::get('/admin/update-user/{id}', [AdminController::class, 'updateUser'])->name('admin.updateUser');
-Route::post('/admin/update-user-post/{id}', [AdminController::class, 'updateUserPost'])->name('admin.updateUserPost');
-Route::get('/admin/search-user', [AdminController::class, 'searchUser'])->name('admin.searchUser');
-
+Route::middleware(['admin'])->group(function () {
+    Route::get('/admin/pending-user', [AdminController::class, 'index'])->name('admin.pendingUser');
+    Route::get('/admin/approve-user/{id}', [AdminController::class, 'approvedUser'])->name('admin.approvedUser');
+    Route::get('/admin/delete-user/{id}', [AdminController::class, 'deleteUser'])->name('admin.deleteUser');
+    Route::get('/admin/update-user/{id}', [AdminController::class, 'updateUser'])->name('admin.updateUser');
+    Route::post('/admin/update-user-post/{id}', [AdminController::class, 'updateUserPost'])->name('admin.updateUserPost');
+    Route::get('/admin/search-user', [AdminController::class, 'searchUser'])->name('admin.searchUser');
+});
 //AdminController end
 
 
 // USER ROUTE START
- 
-Route::get('/users', [UserController::class, 'users'])->name('users');
-Route::get('/users/pending', [UserController::class, 'pendingUsers'])->name('users.pending');
-Route::get('/users/search', [UserController::class, 'users'])->name('users.search');
-Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
-Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
-Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
-Route::get('/users/profile/{id}', [UserController::class, 'profile'])->name('users.profile');
-
-
+Route::middleware(['admin'])->group(function () {
+    Route::get('/users', [UserController::class, 'users'])->name('users');
+    Route::get('/users/pending', [UserController::class, 'pendingUsers'])->name('users.pending');
+    Route::get('/users/search', [UserController::class, 'users'])->name('users.search');
+    Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
+    Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
+    Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
+    Route::get('/users/profile/{id}', [UserController::class, 'profile'])->name('users.profile');
+});
 // USER ROUTE END
 
 
 
-
-
 // RECRUITEMENT OFFICER ROUTE START
-
-
-Route::get('/userRegister',[RegistrationController::class, 'register'])->name('user_registration.register');
-Route::post('/register-process',[RegistrationController::class, 'registerProcess'])->name('user_registration.registerProcess');
-
+Route::middleware(['RecruitementOfficer'])->group(function () {
+    Route::get('/userRegister', [RegistrationController::class, 'register'])->name('user_registration.register');
+    Route::post('/register-process', [RegistrationController::class, 'registerProcess'])->name('user_registration.registerProcess');
+});
 // RECRUITEMENT OFFICER ROUTE END
 
 

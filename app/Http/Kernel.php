@@ -68,4 +68,9 @@ class Kernel extends HttpKernel
         'division-lead' => \App\Http\Middleware\DivisionLeadMiddleware::class,
         'secretary'=> \App\Http\Middleware\SecretaryMiddleware::class,
     ];
+
+    protected $routeMiddleware = [
+        'admin' => \App\Http\Middleware\AdminMiddleware::class,
+        'RecruitementOfficer' => \App\Http\Middleware\RecruitementOfficerMiddleware::class,
+    ];
 }
